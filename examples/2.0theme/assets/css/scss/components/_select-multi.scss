@@ -1,0 +1,37 @@
+/* SelectMultiple */
+
+.handsontable {
+    .htUIMultipleSelectSearch input{ 
+        border-radius: 4px;
+        box-sizing: border-box;
+        height: 32px;
+        line-height: 16px;
+        padding: 8px;
+        position: relative;
+        width: 100%;
+
+        @include themed() {
+            background-color: t($c-th-bg); 
+            border:1px solid t($c-border);
+        }
+
+        &:after { 
+            @include transform(rotate(90deg));
+            position: absolute; 
+            top: $b8px*.5; 
+            right: $b8px*.5;
+            display:block; 
+            width: 24px; 
+            height: 24px; 
+            content: '';  
+            background-image: url($i-arrow-r); 
+            background-repeat: no-repeat; 
+            background-position: center;
+            background-size: $b8px*1.25;
+            opacity:.25;
+        }
+    }
+    .htUIMultipleSelect .ht_master .wtHolder {
+        overflow-y: scroll;
+    }
+}

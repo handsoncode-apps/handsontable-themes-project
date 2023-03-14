@@ -1,0 +1,73 @@
+.handsontable .collapsibleIndicator {
+    @include transform(translate(0%, -50%));
+    position: absolute;
+    top: 50%;
+    left: unset;
+    right: 4px;
+    overflow: hidden;
+    text-indent: -100px;
+    cursor:pointer;
+    border-radius: 2px; ;
+    width: 14px;
+    height: 14px;
+    @include themed() {
+        border: 1px solid t($c-border);
+        background-color: t($c-bg);
+    }
+
+    &:after, 
+    &:before { 
+        @include pseudo(); 
+        @include transform(translate(-50%, -50%));
+
+        position: absolute; 
+        width: 10px; 
+        height: 2px; 
+        top:50%; 
+        left: 50%; 
+
+        @include themed() {
+            background-color: t($c-text-disable);
+        }
+    }
+    &:before { 
+        height: 10px; 
+        width: 2px; 
+        display: none;
+    }
+
+    &.expanded { 
+        &:hover { 
+            &:after { 
+                @include themed() {
+                    background-color: t($c-hl-active-border);
+                }
+            }
+        }
+    }
+    &.collapsed { 
+        @include themed() {
+            background-color: t($c-text-disable);
+            border-color: t($c-text-disable);
+        }
+        &:before, &:after { display: block;
+            @include themed() {
+                background-color: t($c-bg);;
+            }
+        }
+
+        &:hover { 
+            @include themed() {
+                background-color: t($c-hl-active-border);
+                border-color: t($c-hl-active-border);
+            }
+        }
+    }
+
+}
+
+[dir=rtl].handsontable .collapsibleIndicator {
+    right: unset;
+    left: 4px;
+}
+

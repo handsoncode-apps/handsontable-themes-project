@@ -1,0 +1,62 @@
+body, html { margin: 0; padding: 0; background: var(--hot-color-gray100);}
+a, input { 
+	text-decoration:none; 
+	color:$color-primary; 
+}
+* { 
+	-webkit-font-smoothing:antialiased;
+	-moz-osx-font-smoothing:grayscale
+}
+*,*:after,*:before { 
+	box-sizing: border-box; 
+}
+*:focus { 
+	outline: none; 
+}
+body { 	font-family: 'Roboto', 'Arial', sans-serif; }
+body .pace .pace-progress { background-color:var(--hot-color-blue400) }
+html, body {
+    overscroll-behavior-x: none;
+}
+body > aside { background: var(--hot-color-gray900); position: fixed; width: 320px; height:100%; top:0; left:0; padding:40px; padding-right: 0}
+body > main { margin-left: 320px; padding: 40px; height: 100vh; }
+nav {  }
+nav button { width: 100%; text-align: left;display: block; border: 0; background: transparent; padding: 0 40px 0 0; margin: 0; height:48px; color: var(--hot-color-white); opacity: .6}
+nav button.Active { opacity:1; border-right: 4px solid var(--hot-color-accent); }
+nav button:hover {cursor: pointer; opacity: 1}
+
+.ToDo { padding:40px; width:240px; height:100%; position:fixed; top:0; right:0; margin: 0; background: var(--hot-color-white)} 
+.ToDo > li:first-child { font-size: 16px; list-style:none;margin-left: -20px; border-bottom: 1px solid var(--hot-color-gray300); width: 100%; display: block;  }
+.ToDo > li { padding:12px 0; font-size:12px; list-style: decimal-leading-zero}
+.ToDo > li ul { padding:12px; }
+.ToDo > li ul li  { padding-top:8px; }
+
+#Demo { padding-bottom: 80px;}
+#Demo > header { display: flex; justify-content: space-between; align-items: center; padding-bottom: 20px}
+#Demo > header h2 { margin-right: auto; }
+#Demo[dir="rtl"] header { flex-direction: row-reverse;}
+
+.switch { position: relative; display: inline-block; width: 64px; height: 32px; margin-left: 64px;}
+.switch input { opacity: 0; width: 0; height: 0; }
+.switch .slider { box-shadow: 0 0 1px var(--hot-color-black);position: absolute; cursor: pointer; top: 0; left: 0; right: 0;border-radius:16px; bottom: 0; background-color: var(--hot-color-white); transition: .4s;}
+.switch .slider:before { border-radius:50%; position: absolute; content: ""; height: 24px; width: 24px; left: 4px; bottom: 4px; background-color: var(--hot-color-blue400); ; transition: .4s;}
+.switch input:checked + .slider {background-color: var(--hot-color-black);}
+.switch input:focus + .slider { box-shadow: 0 0 1px var(--hot-color-black); }
+.switch input:checked + .slider:before { transform: translateX(32px); background: var(--hot-color-accent);}
+.switch > span { position: absolute;right: 76px;white-space: pre;font-size: 12px;line-height: 32px; }
+
+.relative { position:relative; }
+
+.segmented-control { padding: 4px; border-radius:8px; background-color:white;    position: relative; display: flex; }
+.segmented-control label { font-size: 12px;line-height: 24px; padding:0 8px }
+.segmented-control input { opacity:0; position: absolute; top:0; left: 0; width: 1px; height: 1px}
+.segmented-control input:checked + label { background: var(--hot-color-blue400); color:white;border-radius: 4px;}
+
+#example { overflow:inherit !important; }
+.Demo2 .wtHolder ,.Demo2 #example{ overflow: hidden !important;  }
+
+.MoreMenuDemo .ht_master { overflow:inherit !important; }
+.MoreMenuDemo .wtHolder { overflow:auto !important; }
+
+
+

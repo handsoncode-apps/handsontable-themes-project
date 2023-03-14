@@ -1,0 +1,56 @@
+@use "sass:selector";
+
+@mixin font($font-size, $line-height: normal, $weight: normal) {
+  font-size: $font-size *1px;
+  font-weight: $weight;
+
+  @if $line-height==normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height *1px;//calc($line-height / $font-size);
+  }
+}
+
+@mixin transform( $t... ) {
+    -webkit-transform: $t; /* Safari */
+    -moz-transform: $t;
+    -ms-transform: $t; /* IE 9 */
+    -o-transform: $t;
+    transform: $t;
+}
+
+@mixin transition( $t... ) {
+    -webkit-transition: $t;
+    -moz-transition: $t;
+    -ms-transition: $t;
+    transition: $t;
+}
+
+@mixin transition-delay( $t ) {
+    -webkit-transition-delay: $t;
+    -moz-transition-delay: $t;
+    -ms-transition-delay: $t;
+    transition-delay: $t;
+}
+
+@mixin themed() {
+    @each $theme, $map in $themes {
+        .theme--#{$theme} & {
+            $theme-map: () !global;
+            @each $key, $submap in $map {
+              $value: map-get(map-get($themes, $theme), '#{$key}');
+              $theme-map: map-merge($theme-map, ($key: $value)) !global;
+            }
+            @content;
+            $theme-map: null !global;
+        }
+    }
+}
+
+@mixin pseudo() {
+  content: '';
+  display: block;
+}
+
+
+

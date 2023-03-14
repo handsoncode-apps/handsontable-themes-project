@@ -1,0 +1,34 @@
+<header>
+    <h2><strong>5.</strong> Hidden columns / rows</h2>
+    <label class="switch dm">
+        <span>Dark Mode</span>
+        <input type="checkbox" class="theme">
+        <span class="slider"></span>
+    </label>
+</header>
+<div id="example" class="theme--default rootHot"></div>
+
+<script type="module">
+
+const container = document.querySelector('#example');
+const hot = new Handsontable(container, {
+    data: Handsontable.helper.createSpreadsheetData(30, 20),
+    rowHeaders: true,
+    colHeaders: true,
+    height: 'auto',
+    rowHeaderWidth: 64,
+    colWidths: 128,
+    manualColumnMove: true,
+    manualRowMove: true,
+    licenseKey: 'non-commercial-and-evaluation',
+    contextMenu: [`hidden_columns_show`, `hidden_columns_hide`],
+    hiddenRows: {
+        rows: [3, 5, 9],
+        indicators: true
+    },
+    hiddenColumns: {
+        columns: [3, 5, 9],
+        indicators: true
+    }
+});
+</script>

@@ -1,0 +1,20 @@
+.ht_clone {
+    &_master                        { z-index: 100;}
+    &_inline_start                  { z-index: 120;}
+    &_bottom                        { z-index: 130;}
+    &_bottom_inline_start_corner    { z-index: 150;}
+    &_top                           { z-index: 160;}
+    &_top_inline_start_corner       { z-index: 180;}
+}
+.manualColumnResizer,
+.manualRowResizer                   { z-index: 210;
+    &Gudie.active                   { z-index: 209;}
+}
+.ht__manualColumnMove--guideline,
+.ht__manualColumnMove--backlight,
+.ht__manualRowMove--guideline,
+.ht__manualRowMove--backlight       { z-index: 205;}
+
+
+.ht_editor_hidden                   { z-index: -1; }
+.ht_editor_visible                  { z-index: 200; }

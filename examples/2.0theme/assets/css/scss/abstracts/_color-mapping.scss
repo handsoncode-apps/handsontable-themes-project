@@ -1,0 +1,73 @@
+/* Colour Mapping */
+
+/* Shortcuts */
+$c-primary: 'primary';
+$c-primary-dark: 'darken';
+
+$c-accent: 'accent';
+$c-bg: 'background';
+
+$c-text: 'text';
+$c-text-disable: 'text-disable';
+$c-text-headers: 'text-headers';
+$c-text-invert: 'text-invert';
+$c-text-readonly: 'text-readonly';
+
+$c-border: 'border';
+$c-th-bg: 'th-bg';
+$c-header-hl: 'header-hl';
+$c-hl: 'hl';
+$c-hl-active: 'hl-active';
+$c-hl-active-border: 'hl-active-border';
+$c-hl-solid: 'hl-solid';
+$c-error: 'error';
+$c-success: 'success';
+
+
+/* Themes */
+$themes: (
+	default: (
+		background:		$color-white,
+		primary:		$color-primary,
+		darken:			$color-primary-darken,
+		accent:			$color-accent,
+
+		text:			$color-gray800,
+		text-disable:	$color-gray400,
+		text-readonly:	$color-gray500,
+		text-headers:	$color-gray600,
+		text-invert:	$color-gray300,
+
+		border:			$color-gray300,
+		th-bg:			$color-gray100,
+		hl:				$color-primary-10,
+		hl-solid:		$color-primary-10-solid,
+		header-hl:		$color-gray200,
+		hl-active:		$color-gray800,
+		hl-active-border:$color-gray600,
+		error:			$color-error,
+		success:		$color-success
+	),
+	dark: (
+		background:		$color-gray800,
+		primary:		$color-primary-dm,
+		darken:			$color-primary-dm-darken,
+		accent:			$color-primary,
+
+		text:			$color-gray200,
+		text-disable:	$color-gray600,
+		text-readonly:	$color-gray500,
+		text-headers:	$color-gray400,
+		text-invert:	$color-gray800,
+
+		border:			$color-gray700,
+		th-bg:			$color-gray900,
+		hl:				$color-primary-dm-10,
+		hl-solid:		$color-primary-dm-10-solid,
+		header-hl:		$color-black,
+		hl-active:		$color-primary-dm,
+		hl-active-border:$color-primary-dm,
+		error:			$color-error,
+		success:		$color-success
+	)
+);

@@ -1,0 +1,136 @@
+.handsontable {
+    .columnSorting { 
+        position: relative;
+        &.sortAction {
+            &:hover {
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            &::before {
+                /* Centering start */
+                top: 50%;
+                /* One extra pixel for purpose of proper positioning of sorting arrow, when `font-size` set to default */
+                margin-top: $b8px*-1;
+                /* Centering end */
+                /* For purpose of continuous mouse over experience, when moving between the `span` and the `::before` elements */
+                padding-left: $b8px;
+                padding-right: 0;
+                position: absolute;
+                right: $b8px*-2;
+                left: unset;
+                content: "";
+                height: $b8px*2;
+                width: $b8px*2;
+                background-size: contain;
+                background-repeat: no-repeat;
+                opacity: .8;
+                [dir=rtl] & { 
+                    /* Centering end */
+                    /* For purpose of continuous mouse over experience, when moving between the `span` and the `::before` elements */
+                    padding-right: 0;
+                    padding-left: $b8px;
+                    left: $b8px*-2;
+                    right: unset;
+                }
+
+                .theme--dark & { filter: invert(1);}
+            }
+            &.ascending:before { 
+                /* arrow up; 16px x 16px */
+                background-image: url($i-sort-up); 
+            }
+            &.descending:before { 
+                /* down up; 16px x 16px */
+                background-image: url($i-sort-down); 
+            }
+
+            /* NEW */
+            &.ascending-text:before { 
+                /* arrow up; 16px x 16px */
+                background-image: url($i-sort-up-text); 
+            }
+            &.descending-text:before { 
+                /* down up; 16px x 16px */
+                background-image: url($i-sort-down-text); 
+            }
+
+            /* NEW */
+            &.ascending-number:before { 
+                /* arrow up; 16px x 16px */
+                background-image: url($i-sort-up-number); 
+            }
+            &.descending-number:before { 
+                /* down up; 16px x 16px */
+                background-image: url($i-sort-down-number); 
+            }
+        }  
+    }
+    .ht__active_highlight .columnSorting:before { 
+        filter: invert(1);  
+        .theme--dark & { filter: invert(0);}
+    }
+}
+
+.htGhostTable .htCore span.colHeader.columnSorting:not(.indicatorDisabled)::after {
+    content: "*";
+    display: inline-block;
+    position: relative;
+    /* The multi-line header and header with longer text need more padding to not hide arrow,
+    we make header wider in `GhostTable` to make some space for arrow which is positioned absolutely in the main table */
+    padding-right: 20px;
+}
+
+
+
+/* Column's number position */
+.handsontable {
+    span.colHeader {
+        display: inline-block;
+        line-height: 1.1;
+
+        &.columnSorting::after {
+            /* Centering start */
+            top: 50%;
+            /* Two extra pixels (-2 instead of -4) for purpose of proper positioning of numeric indicators, when `font-size` set to default */
+            margin-top: -2px;
+            /* Centering end */
+            position: absolute;
+            right: -17px;
+            left: unset;
+            /* For purpose of continuous mouse over experience, when moving between the `::before` and the `::after` elements */
+            padding-left: 5px;
+            padding-right: unset;
+            font-size: 8px;
+            height: 8px;
+            line-height: 1.1;
+            /* Workaround for IE9 - IE11 */
+            text-decoration: underline;
+
+            [dir=rtl] & {
+                left: -17px;
+                right: unset;
+                /* For purpose of continuous mouse over experience, when moving between the `::before` and the `::after` elements */
+                padding-right: 5px;
+                padding-left: unset;
+            }
+        }
+    }
+}
+.handsontable {
+    /* Workaround for IE9 - IE11, https://stackoverflow.com/a/21902566, https://stackoverflow.com/a/32120247 */
+    span.colHeader.columnSorting::after {
+        text-decoration: none;
+    }
+
+    /* We support up to 7 numeric indicators, describing order of column in sorted columns queue */
+    span.colHeader.columnSorting[class^=sort-]::after,
+    span.colHeader.columnSorting[class*=" sort-"]::after {
+        content: "+";
+    }
+
+    @for $i from 1 through 7 {
+        span.colHeader.columnSorting.sort-#{$i}::after {
+            content: "#{$i}";
+        }
+    }
+}

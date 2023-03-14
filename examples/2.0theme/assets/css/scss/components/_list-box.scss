@@ -1,0 +1,41 @@
+/* Handsontable listbox theme */
+.handsontable.listbox {
+    margin: 0;
+    .ht_master table {
+        @include themed() {
+            border: 1px solid t($c-border);
+            background: t($c-bg);
+        }
+        border-collapse: separate;
+    }
+
+    th,
+    .handsontable.listbox { 
+        tr:first-child th,
+        tr:last-child th,
+        tr:first-child td,
+        td {
+            border-color: transparent !important;
+        }
+    }
+
+    td,th {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+
+    td.htDimmed {
+        cursor: default;
+        color: inherit;
+        font-style: inherit;
+    }
+    .wtBorder {
+        visibility: hidden;
+    }
+    tr td.current,
+    tr:hover td {
+        @include themed() {
+            background-color: t($c-th-bg); 
+        }
+    }
+}

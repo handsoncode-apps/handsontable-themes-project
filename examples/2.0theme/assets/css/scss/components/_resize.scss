@@ -1,0 +1,61 @@
+.handsontable {
+    .manualRowResizer,
+    .manualColumnResizer {
+        position: absolute;
+        
+        &:hover,
+        &.active { 
+            @include themed() {
+                background-color: t($c-primary);
+            }
+        }
+    }
+    .manualColumnResizer {
+        top: 0;
+        cursor: col-resize;
+        width: $hot-resize-size;
+        height: $hot-header-height;
+        margin-left:2px; // JS correction
+    }
+    .manualRowResizer {
+        left: 0;
+        cursor: row-resize;
+        height: $hot-resize-size;
+        width: $col-width;
+        margin-top:2px; // JS correction
+    }
+
+    .manualColumnResizerGuide {
+        @include themed() {
+            background-color: t($c-primary);
+        }
+        position: absolute;
+        right: unset;
+        top: 0;
+        opacity:.3;
+        display: none;
+        width: $hot-resize-size;
+        margin-left: 2px; // JS correction
+        margin-right: unset;
+
+        &.active { 
+            display: block;
+        }
+    }
+
+    .manualRowResizerGuide {
+        @include themed() {
+            background-color: t($c-primary);
+        }
+        height: $hot-resize-size;
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        opacity:.3;
+        display: none;
+        margin-top: 2px;
+        &.active { 
+            display: block;
+        }
+    }
+}

@@ -1,0 +1,65 @@
+.handsontable {
+    .htCommentCell {
+        position: relative;
+        &:after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            left: unset;
+            border-left: 6px solid transparent;
+            border-right: none;
+            @include themed() {
+                border-top: 6px solid t($c-primary);
+            }
+
+            [dir=rtl] & { 
+                left: 0;
+                right: unset;
+                border-right: 6px solid transparent;
+                border-left: none;
+            }
+        }
+    }
+}
+
+.htCommentsContainer {
+    .htComments {
+        display: none;
+        z-index: 1059;
+        position: absolute;
+    }
+
+    .htCommentTextArea {
+        font-family: $font;
+        box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12);
+        border-radius: 0px 2px 2px 2px;
+        box-sizing: border-box;
+        margin-left: -1px; // js correction
+        width: 215px;
+        height: 90px;
+        padding: $b8px;
+        outline: 0px !important;
+        border:0;
+        -webkit-appearance: none;
+
+        @include themed() {
+            background-color: t($c-bg);
+            border-left:1px solid t($c-primary);
+        }
+
+        &:focus {
+            @include themed() {
+                box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.12), 0 0 0 1px inset t($c-primary);
+            }
+        }
+
+        [dir=rtl] & { 
+            border-left: none;
+
+            @include themed() {
+                border-right:1px solid t($c-primary);
+            }
+        }
+    }
+}

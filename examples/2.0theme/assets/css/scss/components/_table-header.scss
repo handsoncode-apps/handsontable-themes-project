@@ -1,0 +1,67 @@
+.handsontable {
+    th {
+        @include themed() {
+            background-color: t($c-th-bg);
+            color: t($c-text-headers);
+        }
+        text-align: center;
+        font-weight: normal;
+        white-space: nowrap;
+
+        /* ???? fix to create bottom highlight line*/
+        position: relative;
+        overflow: visible;
+    }
+    thead th { padding: 0;
+        .relative { padding: $padding*.5 $padding; }
+    }
+    tbody th, thead th {
+        &.ht__highlight { 
+            @include themed() {
+                background-color: t($c-header-hl);
+            }
+            &:before { 
+                @include pseudo();
+                position: absolute;
+                left: -1px;
+                bottom: -1px;
+                right: -1px;
+                height: 1px;
+                @include themed() {
+                    background-color: t($c-primary);
+                }
+            }
+            &.active { // ????? when is ussed ? 
+                @include themed() {
+                    background-color: t($c-hl-active);
+                }
+            }
+        }
+        &.ht__active_highlight { 
+            @include themed() {
+                border-color: t($c-hl-active-border);
+                background-color: t($c-hl-active);
+                color: t($c-text-invert);
+                box-shadow: -1px 0 0 0 t($c-hl-active-border);
+            }
+        }
+        &:focus {
+            @include themed() {
+                box-shadow: inset 0 0 0 1px t($c-primary);
+            }
+        }
+    }
+    tbody th { 
+        &.ht__highlight:before { 
+            width: 1px; 
+            height: auto; 
+            right: -1px; 
+            top:-1px; 
+            bottom: -1px; 
+            left: auto;
+        }
+    }
+}
+
+
+

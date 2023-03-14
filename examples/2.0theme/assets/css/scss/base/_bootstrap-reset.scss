@@ -1,0 +1,52 @@
+/* Bootstrap Reset
+   ========================================================================== */
+.handsontable {
+    .table { 
+    	  th, td {
+    	  	  border-top: none;
+    	  	  background: inherit;
+    	  }
+				caption + thead tr:first-child ,
+				colgroup + thead tr:first-child,
+				colgroup + thead tr:first-child,
+				thead:first-child tr:first-child,
+				thead:first-child tr:first-child {
+						th, td {
+								@include themed() {
+										border-top: t($c-border);
+								}
+						}
+				}
+				> tbody > tr ,tfoot > tr ,thead > tr  {
+						& > td, & > th {
+								line-height: $hot-line-height;
+								padding: 0;
+						}
+				}
+		}
+		.table-bordered {
+				border: 0;
+				border-collapse: separate;
+				th,td { 
+						border-left: none;
+						&:first-child { 
+								@include themed() {
+										border-left:1px solid t($c-border);
+								}
+						}
+				}
+		}
+		@for $i from 1 through 12 {
+			  &.col-lg-#{$i},
+			  &.col-md-#{$i},
+			  &.col-sm-#{$i},
+			  &.col-xs-#{$i} {
+			    	padding-left: 0; padding-right: 0;
+			  }
+		}
+		.table-striped > tbody > tr:nth-of-type(even) {
+		    @include themed() {
+		        background-color: t($c-bg);
+		    }
+		}
+}

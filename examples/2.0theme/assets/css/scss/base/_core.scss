@@ -1,0 +1,222 @@
+.handsontable {
+    position: relative;
+    touch-action: manipulation;
+    font-size: $base-font-size;
+    font-weight: normal;
+    @include themed() {
+        color: t($c-text);
+    }
+    
+    a {
+        @include themed() {
+            color: t($c-primary);
+        }
+    }
+
+    .hide { display: none; }
+    .relative { position: relative; }
+    .wtHider { width: 0; }
+    .wtSpreader {
+        position: relative;
+        /*must be 0, otherwise blank space appears in scroll demo after scrolling max to the right */
+        width: 0;
+        height: auto;
+    }
+
+    table, tbody, thead, td, th, input, textarea, div {
+        box-sizing: content-box;
+    }
+
+    input, textarea { 
+        min-height: initial;
+    }
+
+    col, col.rowHeader { 
+        width: $col-width;
+
+        &.hidden {
+            width: 0 !important;
+        }
+    }
+
+    table.htCore {
+        border-collapse: separate;
+        /* it must be separate, otherwise there are offset miscalculations in WebKit: http://stackoverflow.com/questions/2655987/border-collapse-differences-in-ff-and-webkit */
+        /* this actually only changes appearance of user selection - does not make text unselectable */
+        /* -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -o-user-select: none;
+        -ms-user-select: none;
+        user-select: none; // no browser supports unprefixed version
+        */
+        border-spacing: 0;
+        margin: 0;
+        border-width: 0;
+        table-layout: fixed;
+        width: 0;
+        outline-width: 0;
+        cursor: default;
+        /* reset bootstrap table style. for more info see: https://github.com/handsontable/handsontable/issues/224 */
+        max-width: none;
+        max-height: none;
+    }
+
+    td, th { 
+        @include themed() {
+            border-right:1px solid t($c-border);
+            border-bottom:1px solid t($c-border);
+            background-color: t($c-bg);
+            [dir=rtl] & { 
+                border-left:1px solid t($c-border);
+                border-right-width: 0;
+            }
+        }
+
+        border-top-width: 0;
+        border-left-width: 0;
+        height: $hot-cell-height;
+        empty-cells: show;
+        line-height: $hot-line-height;
+        padding: 0 $padding 0 $padding;
+        /* top, bottom padding different than 0 is handled poorly by FF with HTML5 doctype */
+        
+        vertical-align: top;
+        overflow: hidden;
+        outline-width: 0;
+        white-space: pre-wrap;
+        &:last-child {
+            /*Foundation framework fix*/
+            border-left: none;
+            @include themed() {
+                border-right:1px solid t($c-border);
+                border-bottom:1px solid t($c-border);
+                
+                [dir=rtl] & {
+                    border-right: none;
+                    border-left:1px solid t($c-border); 
+                }
+            }
+        }
+    } 
+   
+    th:first-child, 
+    th:nth-child(2),
+    td:first-of-type {
+        @include themed() {
+            border-left:1px solid t($c-border);
+            
+            [dir=rtl] & { 
+                border-right:1px solid t($c-border);
+            }
+        }
+    }
+
+    thead tr th:nth-child(2) {
+        @include themed() {
+            border-left:1px solid t($c-border);
+            [dir=rtl] & { 
+                border-right: 1px solid t($c-border);
+            }
+        }  
+    }
+    tr:first-child {
+        th,td { 
+            @include themed() {
+                border-top: 1px solid t($c-border);
+            }
+        }
+    }
+
+    tr.hidden { 
+        display: none; 
+
+        td,th { 
+            display: none;
+        }
+    }
+    .wtHider {
+        position: relative;
+    }
+
+    .ht_master thead,
+    .ht_master tr th,
+    .ht_clone_inline_start thead {
+        visibility: hidden;
+    }
+
+    &.htAutoSize {
+        visibility: hidden;
+        left: -99000px;
+        position: absolute;
+        top: -99000px;
+    }
+}
+
+.ht_master.innerBorderInlineStart ~ .ht_clone_top_inline_start_corner th:nth-child(2),
+.ht_master.innerBorderInlineStart ~ .ht_clone_inline_start td:first-of-type {
+    border-left: 0 none;
+}
+
+/* It removes double right border from first column header when row headers are disabled */
+.ht_clone_top th:nth-child(2) { 
+    @include themed() {
+        border-left-width: 0;
+        border-right:1px solid t($c-border);
+        
+        [dir=rtl] & { 
+            border-left:1px solid t($c-border);
+        }
+    }
+}
+
+.ht_master,
+.ht_clone_inline_start,
+.ht_clone_top,
+.ht_clone_bottom,
+.ht_clone_top .wtHolder,
+.ht_clone_inline_start .wtHolder,
+.ht_clone_bottom .wtHolder  {
+    overflow: hidden;
+}
+
+.ht_master .wtHolder {
+    overflow: auto;
+}
+
+.ht_master:not(.innerBorderInlineStart):not(.emptyColumns) ~ .handsontable {
+    tbody tr th,
+    &:not(.ht_clone_top) thead tr th:first-child { 
+         @include themed() {
+            border-right-width: 0;
+            border-left: 1px solid t($c-border);
+            & [dir=rtl] {
+                border-left-width: 0;
+                border-right: 1px solid t($c-border);
+            }
+        }
+    }
+}
+
+/*
+innerBorderTop - Property controlled by top overlay
+innerBorderBottom - Property controlled by bottom overlay
+ */
+.ht_master:not(.innerBorderTop):not(.innerBorderBottom) { 
+    thead tr:last-child th,
+    & ~ .handsontable thead tr:last-child th,
+    thead tr.lastChild th,
+    & ~ .handsontable thead tr.lastChild th {
+        border-bottom-width: 0;
+    }
+}
+
+textarea.HandsontableCopyPaste {
+    position: fixed !important;
+    top: 0 !important;
+    right: 100% !important;
+    overflow: hidden;
+    opacity: 0;
+    outline: 0 none !important;
+}
+

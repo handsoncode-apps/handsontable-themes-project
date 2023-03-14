@@ -1,0 +1,94 @@
+/* Base */
+$base-shape-8px-grid:				8;
+$b8: 								$base-shape-8px-grid;
+$b8px: 								$b8 * 1px;
+
+/* Font */
+$base-font-size:					13px; 
+$font:								'Roboto', 'Arial', sans-serif;
+/* Radius */
+$radius: 							var(--hot-border-radius);
+
+/* Time */
+$time: 								.2s;
+
+/* Shadow */
+$shadow: 							0 $b8px $b8px*2 rgba(0, 0, 0, 0.12);
+
+/* Colors */
+$color-white:        				var(--hot-color-white);
+$color-black:        				var(--hot-color-black);
+
+$color-gray100:      				var(--hot-color-gray100);
+$color-gray200:      				var(--hot-color-gray200);
+$color-gray300:      				var(--hot-color-gray300);
+$color-gray400:      				var(--hot-color-gray400);
+$color-gray500:      				var(--hot-color-gray500);
+$color-gray600:      				var(--hot-color-gray600);
+$color-gray700:      				var(--hot-color-gray700);
+$color-gray800:      				var(--hot-color-gray800);
+$color-gray900:      				var(--hot-color-gray900);
+
+$color-primary:      				var(--hot-color-blue400);
+$color-primary-darken: 				var(--hot-color-blue500);
+$color-primary-10:      			var(--hot-color-blue400-10);
+$color-primary-10-solid:			var(--hot-color-blue400-10-solid);
+
+$color-primary-dm:					var(--hot-color-accent);
+$color-primary-dm-darken: 			var(--hot-color-accent500);
+$color-primary-dm-10:				var(--hot-color-accent-10);
+$color-primary-dm-10-solid:			var(--hot-color-accent-10-solid);
+
+$color-accent:  					var(--hot-color-accent);
+$color-error:  						var(--hot-color-error);
+$color-success:  					var(--hot-color-success);
+
+$padding-s: 						var(--main-padding-s);
+$padding-m: 						var(--main-padding-m);
+$padding-l: 						var(--main-padding-l);
+$padding-xl: 						var(--main-padding-xl);
+
+:root {
+	--hot-color-white: 				#ffffff;
+	--hot-color-black: 				#000000;
+	--hot-color-gray100: 			#F7F7F9;
+	--hot-color-gray200: 			#EFEFF3;
+	--hot-color-gray300: 			#D1D1D5;
+	--hot-color-gray400: 			#B5B5B9;
+	--hot-color-gray500: 			#868686;
+	--hot-color-gray600: 			#5D5D5D;
+	--hot-color-gray700: 			#353535;
+	--hot-color-gray800: 			#222222;
+	--hot-color-gray900: 			#121212;
+	
+	--hot-color-blue400: 			#1A42E8;
+	--hot-color-blue500: 			#113DC9;
+	--hot-color-blue400-10: 		rgba(26,66,232,.1);
+	--hot-color-blue400-10-solid: 	#E8ECFD;
+
+	--hot-color-accent: 			#27C2FF;
+	--hot-color-accent500: 			#23AFE5;
+	--hot-color-accent-10: 			rgba(39,194,255,.1);
+	--hot-color-accent-10-solid:	#223238;
+
+	--hot-color-error: 				#FA4D56;
+	--hot-color-success:			#37BC6C;
+
+	--main-padding-s:				4px;
+	--main-padding-m:				8px;
+	--main-padding-l:				12px;
+	--main-padding-xl:				16px;
+
+	--hot-border-radius: 			4px;
+}
+
+/* Vars for Legacy */
+$hot-line-height:					21px;
+$hot-cell-height:					22px;
+$col-width:							50px;
+$padding:							4px;
+$frozen-size:						2px; 	// +1 border = 3px
+$hot-header-height:					25px; 	// header height for resize option
+$hot-resize-size:					3px;	// for move & resize
+
+

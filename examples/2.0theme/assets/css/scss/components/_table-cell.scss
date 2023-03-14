@@ -1,0 +1,61 @@
+.handsontable {
+    
+    /* TextRenderer read only */
+    .htDimmed {
+        @include themed() { 
+            color: t($c-text-readonly); 
+        }
+    }
+
+    /* TextRenderer horizontal alignment */
+    .htLeft {
+        text-align: left;
+    }
+    .htCenter {
+        text-align: center;
+    }
+    .htRight {
+        text-align: right;
+    }
+    .htJustify {
+        text-align: justify;
+    }
+
+    /* TextRenderer vertical alignment */
+    .htTop {
+        vertical-align: top;
+    }
+    .htMiddle {
+        vertical-align: middle;
+    }
+    .htBottom {
+      vertical-align: bottom;
+    }
+
+    /* TextRenderer placeholder value */
+    .htPlaceholder {
+        @include themed() { 
+            color: t($c-text-readonly); 
+        }
+    }
+
+    td.htInvalid {
+        /*gives priority over td.area selection background*/
+        @include themed() {
+            background-color: t($c-error) !important;
+        }
+        
+    }
+    td.htNoWrap {
+        white-space: nowrap;
+    }
+
+    td.htSearchResult {
+        @include themed() { 
+            box-shadow: 0 -1px 0 0 t($c-success),-1px 0 0 0 t($c-success), -1px -1px 0 0 t($c-success);
+            border-color: t($c-success);
+            color: t($c-success); 
+            background: t($c-th-bg);
+        }
+    }
+}

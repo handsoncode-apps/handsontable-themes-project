@@ -1,0 +1,20 @@
+#hot-display-license-info {
+    font-family: $font;
+    font-size: -2+$base-font-size;
+    font-weight: normal;
+    padding: $b8px;
+    text-align: left;
+    line-height: 140%;
+
+    @include themed() {
+        background-color: t($c-hl-active);
+        color: t($c-text-invert); 
+    }
+}
+
+#hot-display-license-info a {
+    @include themed() {
+        color: t($c-accent);
+    }
+    font-size: -2+$base-font-size;
+}

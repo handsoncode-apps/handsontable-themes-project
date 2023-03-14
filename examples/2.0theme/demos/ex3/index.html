@@ -1,0 +1,81 @@
+<header>
+<h2><strong>3.</strong> Frozen</h2>
+    <label class="switch dm">
+        <span>Dark Mode</span>
+        <input type="checkbox" class="theme">
+        <span class="slider"></span>
+    </label>
+</header>
+<h3>All - Left / Top / Bottom</h3>
+<div id="example1" class="theme--default rootHot"></div>
+
+<h3>Top</h3>
+<div id="example2" class="theme--default rootHot"></div>
+
+<h3>Left</h3>
+<div id="example3" class="theme--default rootHot"></div>
+
+<h3>Bottom</h3>
+<div id="example4" class="theme--default rootHot"></div>
+
+<script type="module">
+
+const container1 = document.querySelector('#example1');
+const container2 = document.querySelector('#example2');
+const container3 = document.querySelector('#example3');
+const container4 = document.querySelector('#example4');
+
+const hot1 = new Handsontable(container1, {
+    data: Handsontable.helper.createSpreadsheetData(30, 20),
+    height: 200,
+    rowHeaderWidth: 64,
+    colWidths: 128,
+    rowHeaders: true,
+    colHeaders: true,
+    fixedColumnsStart: 2,
+    fixedRowsTop: 2,
+    fixedRowsBottom: 2,
+    contextMenu: true,
+    manualColumnFreeze: true,
+    licenseKey: 'non-commercial-and-evaluation'
+});
+
+const hot2 = new Handsontable(container2, {
+    data: Handsontable.helper.createSpreadsheetData(30, 20),
+    height: 200,
+    rowHeaderWidth: 64,
+    colWidths: 128,
+    rowHeaders: true,
+    colHeaders: true,
+    fixedRowsTop: 2,
+    contextMenu: true,
+    manualColumnFreeze: true,
+    licenseKey: 'non-commercial-and-evaluation'
+});
+
+const hot3 = new Handsontable(container3, {
+    data: Handsontable.helper.createSpreadsheetData(30, 20),
+    height: 200,
+    rowHeaderWidth: 64,
+    colWidths: 128,
+    rowHeaders: true,
+    colHeaders: true,
+    fixedColumnsStart: 2,
+    contextMenu: true,
+    manualColumnFreeze: true,
+    licenseKey: 'non-commercial-and-evaluation'
+});
+
+const hot4 = new Handsontable(container4, {
+    data: Handsontable.helper.createSpreadsheetData(30, 20),
+    height: 200,
+    rowHeaderWidth: 64,
+    colWidths: 128,
+    rowHeaders: true,
+    colHeaders: true,
+    fixedRowsBottom: 2,
+    contextMenu: true,
+    manualColumnFreeze: true,
+    licenseKey: 'non-commercial-and-evaluation'
+});
+</script>

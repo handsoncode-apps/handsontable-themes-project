@@ -1,0 +1,310 @@
+/* Handsontable ContextMenu */
+
+.htContextMenu, .htDropdownMenu, .htFiltersConditionsMenu {
+    &:not(.htGhostTable) {
+        display: none;
+        position: absolute;
+        /* needs to be higher than 1050 - z-index for Twitter Bootstrap modal (#1569) */
+        z-index: 1060;
+    }
+
+    .ht_clone_top,
+    .ht_clone_bottom,
+    .ht_clone_inline_start,
+    .ht_clone_top_inline_start_corner,
+    .ht_clone_bottom_inline_start_corner { display: none;}
+
+    .wtBorder { visibility: hidden; }
+
+    .ht_master {
+        .wtHolder {
+            overflow: hidden;
+        }
+
+        table.htCore { 
+            border:0; 
+            box-shadow: $shadow; 
+            border-radius: $radius; 
+            overflow: hidden; 
+            padding: $b8px*2 0;
+
+            @include themed() {
+                background-color: t($c-bg); 
+            }
+            tbody tr {
+                &.htHidden {
+                    display: none;
+                }
+
+                td { 
+                    @include transition($time all);
+                    border:0;
+                    background-color: transparent;
+                    height: 32px !important;
+                    overflow: hidden;
+                    white-space: nowrap;
+                    text-overflow: ellipsis;
+                    cursor: pointer;
+                    padding: $b8px $b8px*2;
+                    line-height: $b8px*2;
+                    box-sizing: border-box;
+                    &.current, 
+                    &.zeroclipboard-is-hover {
+                        @include themed() {
+                            background-color: t($c-th-bg); 
+                        }
+                    }
+                    &.htSeparator {
+                        padding: 0;
+                        height: $b8px*2 !important;
+                        padding: 0;
+                        cursor: default;
+                        .htItemWrapper {
+                            padding-top:$b8px;
+                            margin:0;
+                            @include themed() { 
+                                border-bottom: 1px solid t($c-header-hl); 
+                            }
+                        }
+                        &.current { background: transparent; }
+                    }
+                    &.htDisabled {
+                        cursor: default;
+                        @include themed() { 
+                            color: t($c-text-disable); 
+                        }
+                    }
+                    &.htCustomMenuRenderer {
+                        &.current { background: transparent; }
+                    }
+
+                    .htItemWrapper { margin:0;}
+
+                    div span.selected {  }
+                }
+
+                /* Space for Icon */
+                /* &:first-child, 
+                &.hasIcon {
+                    td{
+                        display: flex;
+                        gap: 8px;
+                        &:before { 
+                            @include pseudo(); 
+                            width: 16px; 
+                            height: 16px; 
+                            display: inline-block;
+                            background-image: url($i-insert-column-left); background-size: 16px; background-repeat: no-repeat; opacity: .6;
+
+                            .theme--dark & { filter: invert(1);}
+                        }
+                    }
+                }
+                */
+            }
+        }
+
+        /* submenu */
+        .htSubmenu { position: relative;
+            .htItemWrapper { 
+                &:after { 
+                    position: absolute; 
+                    top: $b8px*.5; 
+                    right: $b8px*.5;
+                    display:block; 
+                    width: 24px; 
+                    height: 24px; 
+                    content: '';  
+                    background-image: url($i-arrow-r); 
+                    background-repeat: no-repeat; 
+                    background-position: center;
+                    background-size: $b8px*1.25;
+                    opacity:.25;
+                }
+            }
+        }
+        [dir=rtl] & { right: 0; left: $b8px*.5; }
+    }
+}
+
+
+.handsontable .htUISelectionControls {
+    display: flex;
+    gap:12px;
+    justify-content: end;
+    padding-top:8px;
+    padding-bottom: 16px;
+    text-align: right;
+    [dir=rtl] & {text-align: left;}
+
+    a { 
+        font-size: 12px; line-height: 16px;
+        @include themed() { 
+            color: t($c-primary);
+        }
+        &:hover { 
+            text-decoration: underline;
+        }
+    }
+}
+
+/* DropdownMenu Button*/
+.handsontable .changeType {
+    @include transition ($time,all);
+    border:0; 
+    background: transparent;
+    width: $b8px*2;
+    height: $b8px*2;
+    padding: 0;
+    position: relative;
+    border-radius: 2px;
+    float: right; 
+    margin:3px;
+    cursor: pointer;
+    border-radius: 2px;
+    @include themed() {
+        background-color: t($c-th-bg);
+        box-shadow: 0 0 0px 1px inset t($c-th-bg);
+    }
+
+    &:before { 
+        @include transition ($time,all);
+        content: '';
+        display: block;
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 4px 3px 0 3px;
+        border-color: transparent;
+        position: absolute;
+        left:5px;
+        top:6px;
+        @include themed() {
+            border-top-color: t($c-border);
+        }
+
+    }
+
+    &:hover {
+        @include themed() {
+            background-color: t($c-bg);
+            box-shadow: 0 0 0px 1px inset t($c-border);
+        }
+        &:before { 
+            @include themed() {
+                border-top-color: t($c-text-headers);
+            }
+        }
+    }
+    
+    [dir=rtl] & { float: left;}
+}
+
+.handsontable .htFiltersActive .changeType {
+    @include themed() { 
+        box-shadow: 0 0 0px 1px inset t($c-primary);
+        background-color: t($c-bg);
+
+        &:before { 
+            @include themed() {
+                border-top-color: t($c-text-headers);
+            }
+        }
+    }
+}
+
+/* Menu Action Bar */
+.htFiltersMenuActionBar { 
+    padding:16px 16px 0 !important;
+    @include themed() {
+        border-top:1px solid t($c-header-hl) !important;
+    }
+    
+    .htItemWrapper {  
+        display: flex; 
+        gap:12px; 
+        height: auto !important;
+
+        .htUIButton { width: 50%;
+            input { width: 100%;}
+        }
+    }
+}
+
+/* Menu label */
+.handsontable .htFiltersMenuLabel {
+    font-size: 12px;
+    line-height: 16px;
+    padding-bottom: 4px;
+    @include themed() {
+        color: t($c-text-readonly);
+    }
+}
+
+
+.handsontable .htMenuFiltering { ///??????????
+    @include themed() {
+        border-bottom: t($c-header-hl);
+    }
+    height: 160px;
+    overflow: hidden;
+}
+
+/* Component filter by conditional */
+.handsontable {
+    .htFiltersMenuCondition {
+        padding-bottom: 16px !important;
+        .htUIInput { margin-top: 8px; 
+            input { width: 100%; }
+        }
+        .border { // ?????
+            @include themed() {
+                border-bottom:1px solid t($c-header-hl);
+            }   
+        }
+    }
+}
+
+/* Component filter by value */
+.handsontable .htFiltersMenuValue {
+    padding-top: 16px !important;
+    @include themed() {
+        border-top:1px solid t($c-header-hl) !important;
+    }  
+
+    .htUIMultipleSelectHot { 
+        margin: 0 -16px; 
+        padding:0 16px;
+        @include themed() {
+            border-top:1px solid t($c-header-hl) !important;
+        } 
+
+        .ht_master table.htCore {
+            box-shadow: 0 0 0 0;
+
+            tbody tr td { 
+                height: auto !important;
+                background: transparent;
+                padding: 0;
+            }
+        }
+    }
+}
+
+.htFiltersMenuOperators .htItemWrapper { 
+    display: flex; 
+    gap:16px;
+}
+
+
+////????????/
+.handsontable .htFiltersMenuOperators {
+    padding-bottom: 5px;
+}
+/* Drop-down menu widens header by 5 pixels, sort sequence numbers won't overlap the icon; mainly for the IE9+ */
+.htGhostTable th div button.changeType + span.colHeader.columnSorting:not(.indicatorDisabled) {
+    padding-right: 5px;
+}
+.handsontable head th.hiddenHeader:not(:first-of-type) {
+    display: none;
+}

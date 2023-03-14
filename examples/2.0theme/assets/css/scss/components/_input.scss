@@ -1,0 +1,27 @@
+/* Input */
+
+.handsontable {
+    .htUIInput {
+        position: relative;
+
+        input {
+            border-radius: 4px;
+            box-sizing: border-box;
+            height: 32px;
+            line-height: 16px;
+            padding: 8px;
+
+            @include themed() {
+                background-color: t($c-th-bg); 
+                border:1px solid t($c-border);
+            }
+
+            &:focus {
+                outline: 0;
+            }
+        }
+    }
+    .htUIInputIcon {
+        position: absolute;
+    }
+}

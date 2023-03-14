@@ -1,0 +1,95 @@
+/* Handsontable HiddenColumns */
+
+.handsontable {
+    th.beforeHiddenColumn,
+    th.afterHiddenColumn {
+        position: relative;
+    }
+
+    th.beforeHiddenColumn > div::after,
+    th.afterHiddenColumn > div::before {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0;
+        height: 0;
+        content: "";
+    }
+
+    th.beforeHiddenColumn > div::after {
+        border-width: 3px 4px 3px 0;
+        border-color: rgba(0,0,0,0);
+        border-style: solid;
+        right: 3px;
+
+        @include themed() {
+            border-right-color: t($c-text-disable);
+        }
+
+        [dir=rtl] & { right: initial; left: 3px; }
+    }
+
+    th.afterHiddenColumn > div::before {
+        border-width: 3px 0 3px 4px;
+        border-color: rgba(0,0,0,0);
+        border-style: solid;
+        left: 3px;
+        
+        @include themed() {
+            border-left-color: t($c-text-disable);
+        }
+
+        [dir=rtl] & { left: initial; right: 3px; }
+    }
+    
+    .hiddenHeader { display: none;}
+}
+
+/*!
+ * Handsontable HiddenRows
+ */
+.handsontable {
+
+    th.beforeHiddenRow, 
+    th.afterHiddenRow {
+        position: relative;
+    }
+
+    th.beforeHiddenRow > div::before,
+    th.afterHiddenRow > div::after {
+        position: absolute;
+        right: 0;
+        width: 0;
+        height: 0;
+        content:"";
+    }
+
+    th.beforeHiddenRow > div::before { 
+        border-width: 0 3px 4px 3px;
+        border-color: rgba(0,0,0,0);
+        border-style: solid;
+        bottom: 2px;
+        
+        @include themed() {
+            border-bottom-color: t($c-text-disable);
+        }
+    }
+
+    th.afterHiddenRow > div::after {
+        border-width: 4px 3px 0 3px;
+        border-color: rgba(0,0,0,0);
+        border-style: solid;
+        top: 3px;
+        
+        @include themed() {
+            border-top-color: t($c-text-disable);
+        }
+        
+    }
+}
+
+// ??????????
+.handsontable td.afterHiddenRow.firstVisibleRow,
+.handsontable th.afterHiddenRow.firstVisibleRow {
+  // border-top: 1px solid #CCC;
+}

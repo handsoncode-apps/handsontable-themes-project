@@ -1,0 +1,46 @@
+/* Button */
+
+.handsontable .htUIInput {
+    &.htUIButton {
+        input {
+            @include transition($time, all);
+            cursor: pointer;
+            display: block;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-family: $font; 
+            font-weight: 600;
+            border:0 !important;
+            box-sizing: border-box;
+            height: 32px;
+
+            @include themed() {
+                color: t($c-primary);
+                background-color: t($c-bg);
+                box-shadow: 0 0 0 1px inset t($c-header-hl);
+            }
+
+            &::hover {
+                @include themed() {
+                    box-shadow: 0 0 0 1px inset t($c-primary);
+                }
+            }
+        }
+
+        &.htUIButtonOK {
+            input {
+                box-shadow: 0 0 0 0;
+                @include themed() {
+                    color: t($c-bg);
+                    background-color: t($c-primary);
+                }
+
+                &:hover {
+                    @include themed() {
+                       background-color: t($c-primary-dark);
+                    }
+                }
+            }
+        }
+    }
+}

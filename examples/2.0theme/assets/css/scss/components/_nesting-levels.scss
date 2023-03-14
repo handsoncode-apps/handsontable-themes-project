@@ -1,0 +1,135 @@
+.handsontable {
+    th.ht_nestingLevels {
+        text-align: left;
+        padding-left: 4px;
+
+        [dir=rtl] & { 
+            text-align: right;
+            padding-right: 4px;
+        }
+    }
+
+    th div.ht_nestingLevels {
+        display: inline-block;
+        position: absolute;
+        left: 8px;
+        right: unset;
+
+        [dir=rtl] & { 
+            right: 8px;
+            left: unset;
+        }
+    }
+
+    th span {
+        &.ht_nestingLevel {
+            display: inline-block;
+        }
+        &.ht_nestingLevel_empty {
+            display: inline-block;
+            width: 8px; /* nesting gap */
+            height: 1px;
+            float: left;
+            [dir=rtl] & {
+                float: right;
+            }
+        }
+    }
+
+    th div.ht_nestingButton { 
+        @include transform(translate(0%, -50%));
+        position: absolute;
+        top: 50%;
+        left: unset;
+        right: -1px;
+        overflow: hidden;
+        text-indent: -100px;
+        cursor:pointer;
+        border-radius: 2px; ;
+        width: 14px;
+        height: 14px;
+        @include themed() {
+            border: 1px solid t($c-border);
+            background-color: t($c-bg);
+        }
+
+        &:after, 
+        &:before { 
+            @include pseudo(); 
+            @include transform(translate(-50%, -50%));
+
+            position: absolute; 
+            width: 10px; 
+            height: 2px; 
+            top:50%; 
+            left: 50%; 
+
+            @include themed() {
+                background-color: t($c-text-disable);
+            }
+        }
+        &:before { 
+            height: 10px; 
+            width: 2px; 
+            display: none;
+        }
+
+        &.ht_nestingCollapse { 
+            &:hover { 
+                &:after { 
+                    @include themed() {
+                        background-color: t($c-hl-active-border);
+                    }
+                }
+            }
+        }
+        &.ht_nestingExpand { 
+            @include themed() {
+                background-color: t($c-text-disable);
+                border-color: t($c-text-disable);
+            }
+            &:before, &:after { display: block;
+                @include themed() {
+                    background-color: t($c-bg);;
+                }
+            }
+
+            &:hover { 
+                @include themed() {
+                    background-color: t($c-hl-active-border);
+                    border-color: t($c-hl-active-border);
+                }
+            }
+        }
+
+        [dir=rtl] & { 
+            left: -1px; 
+            right: unset;
+        }
+    }
+}
+
+
+.handsontable.innerBorderInlineStart {
+    th div.ht_nestingLevels,
+    & ~ .handsontable th div.ht_nestingLevels {
+        right: 8px;
+        left: unset;
+
+        [dir=rtl] & {
+            left: 8px;
+            right: unset;
+        }
+    }
+
+    th div.ht_nestingButton,
+    & ~ .handsontable th div.ht_nestingButton {
+        right: 0;
+        left: unset;
+
+        [dir=rtl] & {
+            left: 0;
+            right: unset;
+        }
+    }
+}
